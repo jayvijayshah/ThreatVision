@@ -20,12 +20,12 @@ def send_image_to_together(image_base64):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Please evaluate the provided image based on the accompanying prompt and return the following strictly in JSON format:\r\n\r\njson\r\n\r\n{\r\n    \"threat_level\": number,  \/\/ A number between 0 and 100.\r\n    \"crime_identified\": {   \/\/ A single crime or potential risk.\r\n        \"crime\": \"string\",  \/\/ Name of the crime.\r\n        \"description\": \"string\"  \/\/ Description of the identified risk, limited to 2 lines maximum.\r\n    }\r\n}\r\nThreat level: A number between 0 and 100, categorized as:\r\n0\u201320: Minimal threat, safe environment.\r\n21\u201340: Low threat, minor potential risks.\r\n41\u201360: Moderate threat, noticeable risks present.\r\n61\u201380: High threat, significant risks, potentially dangerous.\r\n81\u2013100: Critical threat, extreme danger, immediate action required.\r\nCrime identified: Identify one visible danger, potential risk, or hazardous element in the image (e.g., robbery, assault, vandalism, harassment, loitering, rioting, hate crimes, and prostitution), with the description limited to a maximum of two lines.\r\nNote: Pay special attention to non-physical threats such as harassment or unwanted physical contact that might not immediately appear dangerous but still indicate a significant risk. These should be considered in determining the overall threat level."
+                        "text": "Please evaluate the provided image based on the accompanying prompt and return the following strictly in JSON format:\\njson\\n```\\n{\\n    \\\"threat_level\\\": number,\\n    \\\"crime_identified\\\": {\\n        \\\"crime\\\": \\\"string\\\",\\n        \\\"description\\\": \\\"string\\\"\\n    }\\n}\\n```\\n\\nThreat level: A number between 0 and 100, categorized as:\\ncrime_identified: A single crime or potential risk.\\ncrime: Name of the crime.\\ndescription:  Description of the identified risk, limited to 2 lines maximum.\\n\\n0\\u201320: Minimal threat, safe environment.\\n21\\u201340: Low threat, minor potential risks.\\n41\\u201360: Moderate threat, noticeable risks present.\\n61\\u201380: High threat, significant risks, potentially dangerous.\\n81\\u2013100: Critical threat, extreme danger, immediate action required.\\nCrime identified: Identify one visible danger, potential risk, or hazardous element in the image (e.g., robbery, assault, vandalism, harassment, loitering, rioting, hate crimes, and prostitution), with the description limited to a maximum of two lines.\\nNote: Pay special attention to non-physical threats such as harassment or unwanted physical contact that might not immediately appear dangerous but still indicate a significant risk. These should be considered in determining the overall threat level."
                     },
                     {
                         "type": "image_url",
                         "image_url": {
-                            "url": f"data:image/jpeg;base64,{image_base64}"
+                            "url": "data:image/jpeg;base64, " + image_base64
                         }
                     }
                 ]
@@ -49,13 +49,12 @@ def send_image_to_together(image_base64):
 
 # Example usage:
 # Assume you have an image encoded in base64
-api_key = "YOUR_API_KEY"
-image_path = "path/to/your/image.jpg"
+image_path = "/Users/jayvijays/Desktop/gettyimages-sb10061957u-003-612x612.jpg"
 
 # Convert image to base64
 with open(image_path, "rb") as img_file:
     image_base64 = base64.b64encode(img_file.read()).decode("utf-8")
 
 # Call the function and print the result
-result = send_image_to_together(api_key, image_base64)
+result = send_image_to_together(image_base64)
 print(result)
