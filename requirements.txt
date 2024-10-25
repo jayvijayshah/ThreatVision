@@ -1,0 +1,4 @@
+opencv-python
+fastapi
+jinja2
+uvicorn
