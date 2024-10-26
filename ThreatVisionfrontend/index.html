@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Threat Monitor</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-side">
+        <div class="panel threat-panel">
+          <div class="panel-header">
+            <h3>
+              <i class="fas fa-shield-alt"></i>
+              Threat Status
+            </h3>
+            <span class="status active">Monitoring</span>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress" id="threatProgress" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="threat-stats">
+            <div class="stat-card">
+              <h4>Risk Level</h4>
+              <div class="value"><span id="riskLevel">0</span></div>
+            </div>
+          </div>
+          <div class="logs">
+            <div class="panel-header">
+              <h3>
+                <i class="fas fa-list"></i>
+                Activity Logs
+              </h3>
+            </div>
+            <div class="logs-content" id="logsContent"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel video-container">
+        <div class="panel-header">
+          <h3>
+            <i class="fas fa-video"></i>
+            Live Feed
+          </h3>
+          <span class="status active">Live</span>
+        </div>
+        <video class="video-player" autoplay loop muted>
+          <source src="bar fight.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <script src="assets/script.js"></script>
+  </body>
+</html>
